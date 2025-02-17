@@ -18,11 +18,11 @@ const meta = {
   : 'https://netdocs-4gqnct18v-charlesifrahs-projects.vercel.app/',  
   baseUrl: '/',
   favicon: '/hubfav.png',
+  onBrokenLinks: 'warn', // Instead of "throw", log a warning
+  onBrokenMarkdownLinks: 'warn', // Same for markdown links
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
-    onBrokenLinks: 'warn', // Instead of "throw", log a warning
-    onBrokenMarkdownLinks: 'warn', // Same for markdown links
   },
 };
 
