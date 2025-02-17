@@ -5,21 +5,24 @@ const code_themes = {
   dark: themes.dracula,
 };
 
+const isProd = process.env.NODE_ENV === 'production';
+const baseUrl = isProd ? '/netdocs/' : '/';
+
 /** @type {import('@docusaurus/types').Config} */
 const meta = {
   title: 'Hubble Network Docs',
-  tagline:
-    'Explore comprehensive documentation for Hubble Network, including guides, references, and best practices.',
-  url: 'https://charlesifrah.github.io', // Your GitHub Pages domain
-  baseUrl: '/',                  // Make sure to include a trailing slash
+  tagline: 'Explore comprehensive documentation for Hubble Network, including guides, references, and best practices.',
+  url: 'https://charlesifrah.github.io',
+  baseUrl: baseUrl,
   favicon: '/hubfav.png',
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
   },
-  organizationName: 'charlesifrah', // Your GitHub username
-  projectName: 'netdocs',           // Your repo name
+  organizationName: 'charlesifrah',
+  projectName: 'netdocs',
 };
+
 
 /** @type {import('@docusaurus/plugin-content-docs').Options[]} */
 const docs = [
