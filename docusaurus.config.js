@@ -9,8 +9,13 @@ const code_themes = {
 const meta = {
   title: 'Hubble Network Docs',
   tagline:
-    'Explore comprehensive documentation for Hubble Network, including guides, references, and best practices.',
-  url: process.env.VERCEL_URL || 'https://netdocs-charlesifrahs-projects.vercel.app/',
+  'Explore comprehensive documentation for Hubble Network, including guides, references, and best practices.',
+  // If VERCEL_URL exists but doesn't have a protocol, prepend "https://"
+  url: process.env.VERCEL_URL
+  ? process.env.VERCEL_URL.startsWith('http')
+  ? process.env.VERCEL_URL
+  : `https://${process.env.VERCEL_URL}`
+  : 'https://netdocs-4gqnct18v-charlesifrahs-projects.vercel.app/',  
   baseUrl: '/',
   favicon: '/hubfav.png',
   i18n: {
