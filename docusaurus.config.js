@@ -21,6 +21,8 @@ const meta = {
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
+    onBrokenLinks: 'warn', // Instead of "throw", log a warning
+    onBrokenMarkdownLinks: 'warn', // Same for markdown links
   },
 };
 
