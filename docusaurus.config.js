@@ -10,13 +10,15 @@ const meta = {
   title: 'Hubble Network Docs',
   tagline:
     'Explore comprehensive documentation for Hubble Network, including guides, references, and best practices.',
-  url: 'https://docs.hubblenetwork.com',
-  baseUrl: '/',
+  url: 'https://charlesifrah.github.io', // Your GitHub Pages domain
+  baseUrl: '/netdocs/',                  // Make sure to include a trailing slash
   favicon: '/hubfav.png',
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
   },
+  organizationName: 'charlesifrah', // Your GitHub username
+  projectName: 'netdocs',           // Your repo name
 };
 
 /** @type {import('@docusaurus/plugin-content-docs').Options[]} */
@@ -41,19 +43,12 @@ const docs = [
       },
     },
   },
-
   // Community packages
-
   // Web UI Kits
-  
   // Web Core
-  
   // React Web Core
-
   // Mobile Core
-  
   // Mobile UI Kits
-
 ];
 
 /** @type {import('@docusaurus/plugin-content-docs').Options} */
@@ -72,18 +67,14 @@ const defaultSettings = {
  * Create a section
  * @param {import('@docusaurus/plugin-content-docs').Options} options
  */
-function create_doc_plugin({
-  sidebarPath = require.resolve('./sidebars-default.js'),
-  ...options
-}) {
+function create_doc_plugin({ sidebarPath = require.resolve('./sidebars-default.js'), ...options }) {
   return [
     '@docusaurus/plugin-content-docs',
-    /** @type {import('@docusaurus/plugin-content-docs').Options} */
-    ({
+    {
       ...defaultSettings,
       sidebarPath,
       ...options,
-    }),
+    },
   ];
 }
 
@@ -102,47 +93,33 @@ const plugins = [
         if (path.startsWith('/guides/capabilities/chat/export-chat-dump')) {
           return ['/capabilities/export-chat-dump'];
         }
-
         if (path.startsWith('/guides/capabilities/misc/embed')) {
           return ['/guides/capabilities/embed'];
         }
-
         if (path.startsWith('/react-ui-kit/basics/integrate')) {
           return ['/react-ui-kit/basics/components-basics'];
         }
-
-        if (
-          path.startsWith(
-            '/guides/capabilities/misc/livestreaming-other-platforms'
-          )
-        ) {
+        if (path.startsWith('/guides/capabilities/misc/livestreaming-other-platforms')) {
           return [
             '/guides/capabilities/livestreaming-other-platforms',
             '/guides/capabilities/recording/livestream-recording',
           ];
         }
-
-        if (
-          path.startsWith('/guides/capabilities/video/add-virtual-background')
-        ) {
+        if (path.startsWith('/guides/capabilities/video/add-virtual-background')) {
           return [
             '/guides/capabilities/middleware/add-virtual-background',
             '/guides/capabilities/customization/add-virtual-background',
           ];
         }
-
         if (path.startsWith('/guides/live-video/concepts')) {
           return ['/guides/live-video/concepts-live-video'];
         }
-
         if (path.startsWith('/guides/voice-conf/concepts')) {
           return ['/guides/voice-conf/concepts-voice-conf'];
         }
-
         if (path.startsWith('/guides/livestream/concepts')) {
           return ['/guides/livestream/concepts-ils'];
         }
-
         if (path.startsWith(''))
           if (path.startsWith('/web-core/livestreaming')) {
             return [
@@ -210,15 +187,6 @@ const plugins = [
             ),
           ];
         }
-        if (path.startsWith('/guides/capabilities/recording')) {
-          return [
-            path.replace('/guides/capabilities/recording', '/guides/recording'),
-            path.replace(
-              '/guides/capabilities/recording',
-              '/guides/features/recording'
-            ),
-          ];
-        }
         if (path.startsWith('/guides/capabilities/embed')) {
           return [
             path.replace('/guides/capabilities/embed', '/guides/embed'),
@@ -252,7 +220,6 @@ const plugins = [
             ),
           ];
         }
-        /* for everything else */
         if (path.startsWith('/guides/capabilities')) {
           return [path.replace('/guides/capabilities', '/guides/features')];
         }
@@ -306,7 +273,7 @@ const plugins = [
             '/react/',
           ];
         }
-        return undefined; // Return a falsy value: no redirect created
+        return undefined;
       },
     },
   ],
@@ -319,11 +286,12 @@ const resourcesHTML = fs.readFileSync('./src/snippets/resources.html', 'utf-8');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   ...meta,
+  onBrokenLinks: 'warn',
+  onBrokenMarkdownLinks: 'warn',
   plugins,
   future: {
     experimental_faster: true,
   },
-
   trailingSlash: false,
   themes: ['@docusaurus/theme-live-codeblock', '@docusaurus/theme-mermaid'],
   clientModules: [require.resolve('./src/client/define-ui-kit.js')],
@@ -334,8 +302,7 @@ const config = {
   presets: [
     [
       '@docusaurus/preset-classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      {
         docs: {
           path: 'docs/guides',
           id: 'guides',
@@ -355,204 +322,182 @@ const config = {
         googleTagManager: {
           containerId: 'GTM-5FDFFSS',
         },
-      }),
+      },
     ],
   ],
-
-  themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
-      image: '/img/dyte-docs-card.png',
-      colorMode: {
-        defaultMode: 'light',
+  themeConfig: {
+    image: '/img/dyte-docs-card.png',
+    colorMode: {
+      defaultMode: 'light',
+    },
+    docs: {
+      sidebar: {
+        autoCollapseCategories: true,
+        hideable: true,
       },
-      docs: {
-        sidebar: {
-          autoCollapseCategories: true,
-          hideable: true,
+    },
+    navbar: {
+      logo: {
+        href: '/',
+        src: '/logo/logo-light.png',
+        srcDark: '/logo/logo-dark.png',
+        alt: 'Hubble Network Documentation',
+        height: '40px',
+        width: '140px',
+      },
+      items: [
+        {
+          label: 'Guides',
+          to: 'guides',
+          className: 'guides-top-header',
         },
-      },
-      navbar: {
-        logo: {
-          href: '/',
-          src: '/logo/logo-light.png',
-          srcDark: '/logo/logo-dark.png',
-          alt: 'Hubble Network Documentation',
-          height: '40px',
-          width: '140px',
+        {
+          label: 'SDKs',
+          type: 'dropdown',
+          className: 'dyte-dropdown',
+          items: [
+            {
+              type: 'html',
+              value: sdksHTML,
+              className: 'dyte-dropdown',
+            },
+          ],
         },
-        items: [
-          {
-            label: 'Guides',
-            to: 'guides',
-            className: 'guides-top-header',
-          },
-          {
-            label: 'SDKs',
-            type: 'dropdown',
-            className: 'dyte-dropdown',
-            items: [
-              {
-                type: 'html',
-                value: sdksHTML,
-                className: 'dyte-dropdown',
-              },
-            ],
-          },
-          {
-            label: 'API',
-            to: '/api/',
-          },
-          {
-            label: 'Resources',
-            type: 'dropdown',
-            className: 'dyte-dropdown resources-dropdown',
-            items: [
-              {
-                type: 'html',
-                value: resourcesHTML,
-                className: 'dyte-dropdown',
-              },
-            ],
-          },
-          {
-            label: 'Support',
-            to: 'https://hubblenetwork.com/contact?type=docs',
-          },
-
-          {
-            type: 'search',
-            position: 'right',
-          },
-          {
-            label: 'Book a demo',
-            href: 'https://hubblenetwork.com/schedule-demo',
-            position: 'right',
-            className: 'navbar-book-demo',
-          },
-          {
-            label: 'Sign Up',
-            href: 'https://hubblenetwork.com/register',
-            position: 'right',
-            className: 'dev-portal-signup dev-portal-link',
-          },
-        ],
-      },
-      footer: {
-        logo: {
-          href: '/',
-          src: '/logo/light.svg',
-          srcDark: '/logo/dark.svg',
-          alt: 'Hubble Network Documentation | Dyte Docs',
-          height: '36px',
+        {
+          label: 'API',
+          to: '/api/',
         },
-        links: [
-          {
-            title: 'Product',
-            items: [
-              {
-                label: 'Demo',
-                href: 'https://hubblenetwork.com',
-              },
-              {
-                label: 'Developer Portal',
-                href: 'https://hubblenetwork.com',
-              },
-              {
-                label: 'Pricing',
-                href: 'https://hubblenetwork.com',
-              },
-            ],
-          },
-          {
-            title: 'Company',
-            items: [
-              {
-                label: 'About Us',
-                href: 'https://hubblenetwork.com',
-              },
-              {
-                label: 'Join Us',
-                href: 'https://hubblenetwork.com',
-              },
-              {
-                label: 'Privacy Policy',
-                href: 'https://hubblenetwork.com/privacy-policy',
-              },
-              {
-                label: 'Contact Us',
-                href: 'https://hubblenetwork.com/contact',
-              },
-            ],
-          },
-          {
-            title: 'Resources',
-            items: [
-              {
-                label: 'Documentation',
-                href: '/',
-              },
-              {
-                label: 'Blog',
-                href: 'https://hubblenetwork.com/blog',
-              },
-            ],
-          },
-        ],
-        copyright: 'Copyright © Hubble Network 2025. All rights reserved.',
+        {
+          label: 'Resources',
+          type: 'dropdown',
+          className: 'dyte-dropdown resources-dropdown',
+          items: [
+            {
+              type: 'html',
+              value: resourcesHTML,
+              className: 'dyte-dropdown',
+            },
+          ],
+        },
+        {
+          label: 'Support',
+          to: 'https://hubblenetwork.com/contact?type=docs',
+        },
+        {
+          type: 'search',
+          position: 'right',
+        },
+        {
+          label: 'Book a demo',
+          href: 'https://hubblenetwork.com/schedule-demo',
+          position: 'right',
+          className: 'navbar-book-demo',
+        },
+        {
+          label: 'Sign Up',
+          href: 'https://hubblenetwork.com/register',
+          position: 'right',
+          className: 'dev-portal-signup dev-portal-link',
+        },
+      ],
+    },
+    footer: {
+      logo: {
+        href: '/',
+        src: '/logo/light.svg',
+        srcDark: '/logo/dark.svg',
+        alt: 'Hubble Network Documentation | Dyte Docs',
+        height: '36px',
       },
-      prism: {
-        theme: code_themes.light,
-        darkTheme: code_themes.dark,
-        additionalLanguages: [
-          'dart',
-          'ruby',
-          'groovy',
-          'kotlin',
-          'java',
-          'swift',
-          'objectivec',
-          'json',
-          'bash',
-        ],
-        magicComments: [
-          {
-            className: 'theme-code-block-highlighted-line',
-            line: 'highlight-next-line',
-            block: { start: 'highlight-start', end: 'highlight-end' },
-          },
-          {
-            className: 'code-block-error-line',
-            line: 'highlight-next-line-error',
-          },
-        ],
-      },
-      algolia: {
-        appId: 'HL0HSV62RK',
-        apiKey: '72ebf02146698733b7114c7b36da0945',
-        indexName: 'docs',
-        contextualSearch: true,
-        searchParameters: {},
-      },
-    }),
-
-  // webpack: {
-  //   jsLoader: (isServer) => ({
-  //     loader: require.resolve('swc-loader'),
-  //     options: {
-  //       jsc: {
-  //         parser: {
-  //           syntax: 'typescript',
-  //           tsx: true,
-  //         },
-  //         target: 'es2017',
-  //       },
-  //       module: {
-  //         type: isServer ? 'commonjs' : 'es6',
-  //       },
-  //     },
-  //   }),
-  // },
+      links: [
+        {
+          title: 'Product',
+          items: [
+            {
+              label: 'Demo',
+              href: 'https://hubblenetwork.com',
+            },
+            {
+              label: 'Developer Portal',
+              href: 'https://hubblenetwork.com',
+            },
+            {
+              label: 'Pricing',
+              href: 'https://hubblenetwork.com',
+            },
+          ],
+        },
+        {
+          title: 'Company',
+          items: [
+            {
+              label: 'About Us',
+              href: 'https://hubblenetwork.com',
+            },
+            {
+              label: 'Join Us',
+              href: 'https://hubblenetwork.com',
+            },
+            {
+              label: 'Privacy Policy',
+              href: 'https://hubblenetwork.com/privacy-policy',
+            },
+            {
+              label: 'Contact Us',
+              href: 'https://hubblenetwork.com/contact',
+            },
+          ],
+        },
+        {
+          title: 'Resources',
+          items: [
+            {
+              label: 'Documentation',
+              href: '/',
+            },
+            {
+              label: 'Blog',
+              href: 'https://hubblenetwork.com/blog',
+            },
+          ],
+        },
+      ],
+      copyright: 'Copyright © Hubble Network 2025. All rights reserved.',
+    },
+    prism: {
+      theme: code_themes.light,
+      darkTheme: code_themes.dark,
+      additionalLanguages: [
+        'dart',
+        'ruby',
+        'groovy',
+        'kotlin',
+        'java',
+        'swift',
+        'objectivec',
+        'json',
+        'bash',
+      ],
+      magicComments: [
+        {
+          className: 'theme-code-block-highlighted-line',
+          line: 'highlight-next-line',
+          block: { start: 'highlight-start', end: 'highlight-end' },
+        },
+        {
+          className: 'code-block-error-line',
+          line: 'highlight-next-line-error',
+        },
+      ],
+    },
+    algolia: {
+      appId: 'HL0HSV62RK',
+      apiKey: '72ebf02146698733b7114c7b36da0945',
+      indexName: 'docs',
+      contextualSearch: true,
+      searchParameters: {},
+    },
+  },
 };
 
 module.exports = config;

@@ -1,7 +1,5 @@
 import type { ComponentProps, ReactNode } from 'react';
 import {
-  ZephyrIcon,
-  BaremetalIcon,
   ReactIcon,
   AngularIcon,
   AndroidIcon,
@@ -26,13 +24,11 @@ const SECTIONS: Section[] = [
   {
     name: 'Zephyr',
     docId: 'zephyr',
-    icon: ZephyrIcon,
     section: 'ble-devices-rtos',
   },
   {
     name: 'Baremetal',
     docId: 'baremetal',
-    icon: BaremetalIcon,
     section: 'ble-devices-baremetal',
   },
 ];
