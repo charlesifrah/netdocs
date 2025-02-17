@@ -10,7 +10,7 @@ const meta = {
   title: 'Hubble Network Docs',
   tagline:
     'Explore comprehensive documentation for Hubble Network, including guides, references, and best practices.',
-  url: 'hostname',
+  url: process.env.VERCEL_URL || 'https://netdocs-4gqnct18v-charlesifrahs-projects.vercel.app/',
   baseUrl: '/',
   favicon: '/hubfav.png',
   i18n: {
