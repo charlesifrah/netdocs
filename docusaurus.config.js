@@ -11,7 +11,7 @@ const meta = {
   tagline:
     'Explore comprehensive documentation for Hubble Network, including guides, references, and best practices.',
   url: 'https://charlesifrah.github.io', // Your GitHub Pages domain
-  baseUrl: '/netdocs/',                  // Make sure to include a trailing slash
+  baseUrl: '/',                  // Make sure to include a trailing slash
   favicon: '/hubfav.png',
   i18n: {
     defaultLocale: 'en',
