@@ -16,12 +16,14 @@ import PhHelloBar from '../components/homepage/PhHelloBar';
 export default function Homepage() {
   return (
     <Layout
-      title="Dyte Documentation"
+      title="Hubble Network Documentation"
       wrapperClassName="homepage flex flex-col"
       noFooter
     >
       <Head>
-        <link rel="prefetch" href="/assets/css/elements.min.css" />
+      <title>Hubble Documentation</title>
+      <meta name="description" content="Official Documentation for Hubble Products and SDKs." />
+      <link rel="prefetch" href="/assets/css/elements.min.css" />
       </Head>
       <div>
         <PhHelloBar />

@@ -18,49 +18,50 @@ interface Resource {
 
 const ALL_RESOURCES: Resource[] = [
   {
-    url: '/guides/v2-migration-guide',
+    url: '/guides/hubble-migration-guide',
     type: 'blog',
-    title: 'Migrate to v2 REST API',
+    title: 'Migrate to Hubble v2 SDK',
     description:
-      'Excited to announce the release of our v2 REST APIs, which are faster, more idiomatic, and easier to use.',
+      'Discover our upgraded v2 SDK for Hubble Network – faster, more intuitive, and built for modern connectivity.',
     image:
-      'https://dyte.io/blog/content/images/size/w1000/2023/02/Dyte-Blog---v2-APIs.jpg',
+      'sdk-image.png',
     duration: '3 min',
   },
   {
-    url: 'https://dyte.io/blog/hls-in-depth/',
+    url: 'https://hubble.network/blog/ble-in-depth/',
     type: 'blog',
-    title: 'HLS in Depth',
+    title: 'BLE Communication in Depth',
     description:
-      "HLS is widely adopted, simple, yet robust. Learn how it works from a client's perspective, its segments, features, and disadvantages.",
+      'Explore how Bluetooth Low Energy (BLE) works and how Hubble Network leverages it for efficient connectivity.',
     image:
-      'https://dyte.io/blog/content/images/size/w1000/2023/07/HLS--indepth--header--1.png',
+      'ble-image.png',
     duration: '10 min',
   },
   {
-    url: 'https://www.youtube.com/watch?v=eVUqkNNHh1o',
+    url: 'https://www.youtube.com/watch?v=VIDEO_ID_1',
     type: 'video',
-    title: 'Integrating React UI Kit',
+    title: 'Integrating Hubble BLE SDK',
     description:
-      'In this video learn how to use React UI Kit prebuilt components to add live video and audio to your React application.',
-    image: 'https://img.youtube.com/vi/eVUqkNNHh1o/hqdefault.jpg',
+      'Learn how to integrate the Hubble BLE SDK into your application for seamless connectivity.',
+    image: 'sdk-image.png',
     duration: '5 min',
   },
   {
-    url: 'https://www.youtube.com/watch?v=ZkrZc8Neh6A',
+    url: 'https://www.youtube.com/watch?v=VIDEO_ID_2',
     type: 'video',
-    title: 'Video KYC App using React UI Kit',
+    title: 'Building a Hubble BLE-enabled App',
     description:
-      'In this episode of Dyte Byte we show how to build Video KYC App using React UI Kit.',
-    image: 'https://img.youtube.com/vi/ZkrZc8Neh6A/hqdefault.jpg',
+      'Watch how Hubble Network enables BLE connectivity in a sample application.',
+    image: 'ble-image.png',
     duration: '5 min',
   },
   {
-    url: 'https://www.youtube.com/watch?v=UHuzWDxrvLk',
+    url: 'https://www.youtube.com/watch?v=VIDEO_ID_3',
     type: 'video',
-    title: 'Calling Dyte REST APIs',
-    description: 'Understand our HTTP REST APIs',
-    image: 'https://img.youtube.com/vi/UHuzWDxrvLk/hqdefault.jpg',
+    title: 'Interacting with Hubble BLE APIs',
+    description:
+      'Learn how to interact with Hubble BLE APIs for seamless device connectivity.',
+    image: 'ble-image.png',
     duration: '7 min',
   },
 ];
@@ -95,7 +96,7 @@ function Resource({
       </div>
       <div className="mt-4 flex items-center justify-between">
         <div className="text-sm text-text-400">
-          {`${duration} ${type === 'Video' ? 'watch' : 'read'}`}
+          {`${duration} ${type === 'video' ? 'watch' : 'read'}`}
         </div>
       </div>
     </Link>
@@ -128,15 +129,15 @@ export default function ResourcesSection() {
   };
 
   return (
-    <section className="no-underline-links my-20 px-6 ">
+    <section className="no-underline-links my-20 px-6">
       <div className="mx-auto max-w-5xl">
         <div className="flex items-center justify-between">
           <div>
-            <span className="dyte-badge">RESOURCES</span>
-            <h2 className="mb-6 text-4xl">Want to know more?</h2>
+            <span className="hubble-badge">RESOURCES</span>
+            <h2 className="mb-6 text-4xl">Want to know more about Hubble Network?</h2>
           </div>
           <Link
-            to="https://dyte.io/blog"
+            to="https://hubble.network/blog"
             className="font-jakarta text-sm font-semibold text-primary"
           >
             All Blogs <ArrowRightFilled className="ml-1" />
@@ -150,7 +151,10 @@ export default function ResourcesSection() {
               activeType === 'all' &&
                 'bg-zinc-700 text-white dark:bg-zinc-200 dark:text-black'
             )}
-            onClick={() => setActiveType('all')}
+            onClick={() => {
+              setActiveType('all');
+              setPage(1);
+            }}
           >
             All
           </button>
@@ -160,7 +164,10 @@ export default function ResourcesSection() {
               activeType === 'blog' &&
                 'bg-zinc-700 text-white dark:bg-zinc-200 dark:text-black'
             )}
-            onClick={() => setActiveType('blog')}
+            onClick={() => {
+              setActiveType('blog');
+              setPage(1);
+            }}
           >
             Blogs
           </button>
@@ -170,7 +177,10 @@ export default function ResourcesSection() {
               activeType === 'video' &&
                 'bg-zinc-700 text-white dark:bg-zinc-200 dark:text-black'
             )}
-            onClick={() => setActiveType('video')}
+            onClick={() => {
+              setActiveType('video');
+              setPage(1);
+            }}
           >
             Videos
           </button>
@@ -178,9 +188,9 @@ export default function ResourcesSection() {
 
         <div className="relative flex flex-col">
           <div className="no-underline-links grid grid-cols-3 gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {currentResources.map((resource, idx) => {
-              return <Resource {...resource} key={idx} />;
-            })}
+            {currentResources.map((resource, idx) => (
+              <Resource {...resource} key={idx} />
+            ))}
           </div>
 
           <div className="my-10 ml-auto flex items-center justify-center md:my-0">

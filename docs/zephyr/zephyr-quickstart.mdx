@@ -1,0 +1,93 @@
+---
+title: Zephyr Quick Start
+description: Quick start guide to integrating HubbleNetwork SDK with Zephyr
+sidebar_position: 3
+---
+
+# Zephyr Quick Start
+
+HubbleNetwork can be added to the manifest of an existing Zephyr project or function as the manifest repository. The following sections describe each approach.
+
+## Adding Hubble Network to Zephyr
+
+This procedure explains how to add Hubble Network to an existing Zephyr project or start a new project with Zephyr as the manifest repository.
+
+1. **Set Up Your Zephyr Project:**  
+   For new projects, refer to the Zephyr Getting Started Guide to set up your environment.
+
+2. **Integrate HubbleNetwork SDK:**  
+   After creating or selecting a Zephyr project, pull the SDK into your Zephyr workspace. Adjust your West sub-manifest (or create a new one) by including the snippet below:
+   ```yaml
+   manifest:
+     remotes:
+       - name: hubble
+         url-base: https://github.com/HubbleNetwork
+     projects:
+       - name: hubblenetwork-sdk
+         revision: main
+         path: modules/lib/hubblenetwork-sdk
+         remote: hubble
+         groups:
+           - optional
+
+3. **Update the Project Configuration:**
+    Run the following command to update the project:
+    ```bash
+    west update hubblenetwork-sdk
+    ```
+4. **Enable the Required Modules:**
+    Add the following lines to your project’s prj.conf file:
+    ```bash
+    CONFIG_HUBBLE_BLE_NETWORK=y
+    ```
+    ```bash
+    CONFIG_HUBBLE_NETWORK=y
+    ```
+    Use CONFIG_HUBBLE_BLE_NETWORK=y to enable the BLE network module or CONFIG_HUBBLE_NETWORK=y for the satellite network module.
+
+## Using HubbleNetwork as the Manifest Repository
+Alternatively, HubbleNetwork can serve as the manifest repository. Follow these steps:
+
+1. **Create a Python Virtual Environment:**
+
+    ```bash
+    python3 -m venv ~/hubblenetwork-workspace/.venv
+    ```
+2. **Activate the virtual environment:**
+    ```bash
+    source ~/hubblenetwork-workspace/.venv/bin/activate
+    ```
+    Once activated the shell will be prefixed with (.venv). Deactivate at any time by running deactivate. Re-activation is necessary whenever returning to work in this environment.
+
+3. **Install West:**
+    ```bash
+    pip install west
+    ```
+4. **Obtain the Zephyr Source Code:**
+    ```bash
+    west init -m git@github.com:HubbleNetwork/hubblenetwork-sdk.git ~/hubblenetwork-workspace
+    cd ~/hubblenetwork-workspace/modules/lib/hubblenetwork-sdk
+    west update
+    ```
+5. **Export Zephyr:**
+    ```bash
+    west zephyr-export
+    ```
+    This command exports a Zephyr CMake package, allowing CMake to automatically load the required boilerplate code.
+6. **Install Python Dependencies:**
+  ```bash
+  west packages pip --install
+  pip install -r ~/hubblenetwork-workspace/zephyr/scripts/requirements.txt
+  ```
+
+## Building and Running the First Application
+Once the integration is complete, you can build and flash a BLE network application:
+1. **Build the Application:**
+  ```bash
+  cd ~/hubblenetwork-workspace/
+  west build -p -b nrf52840dk_nrf52840 modules/lib/hubblenetwork-sdk/samples/zephyr/ble-network
+  ```
+2. **Flash the Application:**
+  ```bash
+  west flash
+  ```

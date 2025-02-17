@@ -15,26 +15,27 @@ export default function HelpSection({ className = '' }) {
           How can we help you today?
         </h2>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
+          {/* Demo Section */}
           <div className="rounded-lg bg-zinc-100 p-6 dark:bg-zinc-900">
             <img
               src="/static/landing-page/calendar.svg"
-              alt="Book a demo"
+              alt="Schedule a demo"
               width="48"
               height="48"
             />
-            <h3 className="my-3">Book a Demo</h3>
+            <h3 className="my-3">Schedule a Demo</h3>
             <p className="text-zinc-600 dark:text-zinc-400">
-              Contact us for a demo. We are looking forward to connecting with
-              you.
+              Request a personalized demo to explore how Hubble Network can enhance your connectivity solutions.
             </p>
             <Link
-              href="https://dyte.io/schedule-demo"
+              href="https://hubble.network/schedule-demo"
               className="text-primary dark:text-primary-100"
             >
-              Schedule a Call &rarr;
+              Schedule a Demo &rarr;
             </Link>
           </div>
 
+          {/* Support Section */}
           <div className="rounded-lg bg-zinc-100 p-6 dark:bg-zinc-900">
             <img
               src="/static/landing-page/customer.svg"
@@ -44,17 +45,17 @@ export default function HelpSection({ className = '' }) {
             />
             <h3 className="my-3">Support</h3>
             <p className="text-zinc-600 dark:text-zinc-400">
-              Dyte&apos;s expert support team is always available to help. Connect for
-              dedicated 1:1 support!
+              Hubble Network’s dedicated support team is here to help you with any questions or issues.
             </p>
             <Link
-              href="https://dyte.io/contact"
+              href="https://hubble.network/contact"
               className="text-primary dark:text-primary-100"
             >
-              Contact Us &rarr;
+              Contact Support &rarr;
             </Link>
           </div>
 
+          {/* FAQs Section */}
           <div className="rounded-lg bg-zinc-100 p-6 dark:bg-zinc-900">
             <img
               src="/static/landing-page/chat.svg"
@@ -64,8 +65,7 @@ export default function HelpSection({ className = '' }) {
             />
             <h3 className="my-3">FAQs</h3>
             <p className="text-zinc-600 dark:text-zinc-400">
-              Browse through our FAQs to find answers to commonly asked
-              questions.
+              Browse our FAQs to find answers to common questions about Hubble Network.
             </p>
             <Link href="/faq" className="text-primary dark:text-primary-100">
               View FAQs &rarr;

@@ -1,28 +1,37 @@
 [
   {
-    "createdAt": 1684320435,
+    "createdAt": 1685000000,
     "fixes": [
-      "This release consists primarily of internal fixes and improvements and does not introduce any changes that directly affect our users."
+      "Fixed an issue where BLE advertisement packets were not generated correctly under high load.",
+      "Resolved intermittent connectivity issues with the satellite communication endpoint."
     ],
     "features": [
-      "You can add timed metadata to your video stream using [Dyte's interactive recording](/guides/recording/interactive-recording). Timed metadata is metadata with timestamps. It refers to digital markers added to a video file to provide additional context and information at specific points in the content range. These data points can be inserted into a stream programmatically, using the interactive_config in the [Start recording a meeting API](/api/#/operations/start_recording)."
+      "Introduced interactive debugging tools in the Everything Hubble Portal for BLE APIs.",
+      "Added a new endpoint for dynamic encryption key management using hubble_ble_key_set."
     ]
   },
   {
-    "createdAt": 1677473766,
+    "createdAt": 1679000000,
     "fixes": [
-      "The response of v2 [create](/api#/operations/create_meeting) and [update](/api#/operations/update_meeting) meeting API has been updated to include `live_stream_on_start` parameter.",
-      "The allowed `preferred_regions` in v2 meetings has been expanded to include `eu-central-1`.",
-      "Recording storage body validation has been updated to allow empty strings."
+      "Updated error handling in hubble_ble_init to provide detailed diagnostics.",
+      "Improved response formatting for hubble_ble_utc_set API calls."
     ],
     "features": [
-      "You can add an image as a [watermark](/guides/recording/add-watermark) in your recording. See [Start recording a meeting API](/api#/operations/start_recording).",
-      "Support for recording a video in portrait mode is added. You can specify the width and height of the recording in the `video_config` in [Start recording a meeting API](/api#/operations/start_recording).",
-      "Maximum height of the recorder has been increased to 1920px.",
-      "[Create a preset API](/api#/operations/post-presets) has been updated to include a new permission, `can_livestream`.",
-      "[Update a meeting API](/api#/operations/update_meeting) has been updated to include status in the request body.",
-      "The webhook event validations have been updated for the `chat_sync` event.",
-      "Schema validation has been added for v2 preset UI."
+      "Implemented support for precise UTC time synchronization using hubble_ble_utc_set.",
+      "Enhanced performance of hubble_ble_advertise_get with reduced latency.",
+      "Integrated detailed telemetry data in API responses for better monitoring."
+    ]
+  },
+  {
+    "createdAt": 1672000000,
+    "fixes": [
+      "Fixed minor bugs in BLE advertisement data processing.",
+      "Optimized caching of configuration data to improve API response times."
+    ],
+    "features": [
+      "Launched the interactive Hubble API explorer within the Everything Hubble Portal.",
+      "Improved rate limiting and security for all Hubble API endpoints.",
+      "Added comprehensive logging to monitor API usage patterns and performance."
     ]
   }
 ]

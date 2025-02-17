@@ -3,13 +3,16 @@ import Link from '@docusaurus/Link';
 import {
   AppsAddInRegular,
   ArrowRightFilled,
-  DocumentRegular,
+  BluetoothFilled,
+  GlobeFilled,
+  GridDotsFilled,
+  // Removed DocumentRegular because it's undefined
   OpenRegular,
   RecordRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
 import clsx from 'clsx';
-import { ChevronRight, GitHub } from 'react-feather';
+import { ChevronRight, GitHub, FileText, Bluetooth } from 'react-feather';
 
 interface Guide {
   title: string;
@@ -20,22 +23,22 @@ interface Guide {
 
 const guides: Guide[] = [
   {
-    title: 'Start Recording a Meeting',
-    icon: RecordRegular,
-    text: 'Check out an example of this integration of recording a meeting.',
-    link: '/guides/capabilities/recording',
+    title: 'Setup Satellite Communication',
+    icon: GlobeFilled, // Replace with an appropriate satellite icon if available
+    text: 'Learn how to integrate our satellite data transmission features.',
+    link: '/guides/satellite/setup',
   },
   {
-    title: 'Migrate from Twilio',
-    icon: VideoRegular,
-    text: 'Migration simplified. Refer the guide.',
-    link: '/guides/migration/twilio/concepts-twilio-vs-dyte',
+    title: 'Configure BLE Connectivity',
+    icon: BluetoothFilled, // Replace with a BLE icon if available
+    text: 'Step-by-step guide to enable Bluetooth Low Energy communication.',
+    link: '/guides/ble/configuration',
   },
   {
-    title: 'Create a Breakout Room',
-    icon: AppsAddInRegular,
-    text: 'Easily split a meeting in separate sessions.',
-    link: '/guides/capabilities/breakoutroom/create-breakout-rooms',
+    title: 'Optimize Network Integration',
+    icon: GridDotsFilled, // Or a data/integration icon if preferred
+    text: 'Best practices for integrating Hubble Network services into your app.',
+    link: '/guides/network/integration',
   },
 ];
 
@@ -49,41 +52,39 @@ interface Sample {
 
 const samples: Sample[] = [
   {
-    title: 'Code Sharing Platform',
+    title: 'Real-Time Data Dashboard',
     platform: 'React',
-    source: 'https://github.com/dyte-io/blog-live-code-sharing',
-    blog: 'https://dyte.io/blog/live-code-sharing-platform/',
-    demo: 'https://dyte-code-editor.herokuapp.com/room/bbbf8c1f-5eee-4548-90e6-54c1301711cb',
+    source: 'https://github.com/hubble-network/realtime-dashboard',
+    blog: 'https://hubble.network/blog/realtime-dashboard',
+    demo: 'https://hubble-network-demo.vercel.app',
   },
   {
-    title: 'Async Interview Platform',
+    title: 'IoT Connectivity App',
     platform: 'React',
-    blog: 'https://dyte.io/blog/async-interview-platform/',
-    source: 'https://github.com/dyte-io/async-interview',
-    demo: 'https://dyte-async-interview.vercel.app',
+    blog: 'https://hubble.network/blog/iot-connectivity',
+    source: 'https://github.com/hubble-network/iot-app',
+    demo: 'https://hubble-iot-demo.vercel.app',
   },
   {
-    title: 'Live Proctoring System',
+    title: 'Global Data Analytics',
     platform: 'React',
-    blog: 'https://dyte.io/blog/live-proctoring-system/',
-    source: 'https://github.com/dyte-io/proctored-live-interviews',
-    demo: 'https://dyte-multi-faces.netlify.app/',
+    blog: 'https://hubble.network/blog/global-data-analytics',
+    source: 'https://github.com/hubble-network/data-analytics',
+    demo: 'https://hubble-data-demo.netlify.app',
   },
 ];
 
-function Guide({ title, text, icon: Icon, link }: (typeof guides)[0]) {
+function Guide({ title, text, icon: Icon, link }: Guide) {
   return (
     <Link
       to={link}
       className="group flex cursor-pointer items-start gap-2 rounded-lg border-2 border-transparent p-3 text-inherit transition-colors hover:border-primary hover:text-primary"
     >
       <Icon className="h-6 w-6" />
-
       <div className="flex flex-col">
         <h4 className="mb-1 font-semibold">{title}</h4>
         <p className="mb-0 text-sm text-text-400">{text}</p>
       </div>
-
       <ChevronRight className="ml-auto h-5 w-5 self-center opacity-0 transition-opacity group-hover:opacity-100" />
     </Link>
   );
@@ -98,20 +99,17 @@ function Sample({ title, platform, blog, source, demo }: Sample) {
         </h4>
         <div className="text-sm text-text-400">{platform}</div>
       </div>
-
       <div className="flex items-center gap-2.5">
         {blog && (
           <Link to={blog} className="text-inherit">
-            <DocumentRegular className="h-5 w-5" />
+            <FileText className="h-5 w-5" />
           </Link>
         )}
-
         {demo && (
           <Link to={demo} className="text-inherit">
             <OpenRegular className="h-5 w-5" />
           </Link>
         )}
-
         {source && (
           <Link
             to={source}
@@ -131,13 +129,11 @@ export default function GuidesAndSamples() {
     <section className="no-underline-links my-40 mx-auto flex w-full max-w-5xl flex-col gap-10 p-4 py-0 md:flex-row md:gap-0">
       <div className="flex-1">
         <div className="mb-8 flex items-center justify-between">
-          <h3 className="m-0">Popular how to guides</h3>
-
+          <h3 className="m-0">Popular Hubble Guides</h3>
           <Link to="/guides" className="font-jakarta text-sm font-semibold">
-            View more guides <ArrowRightFilled className="ml-1" />
+            View all guides <ArrowRightFilled className="ml-1" />
           </Link>
         </div>
-
         <div className="flex flex-col gap-4">
           {guides.map((guide) => (
             <Guide {...guide} key={guide.title} />
@@ -154,16 +150,14 @@ export default function GuidesAndSamples() {
 
       <div className="w-full md:max-w-sm">
         <div className="mb-8 flex items-center justify-between">
-          <h3 className="m-0">Popular sample apps</h3>
-
+          <h3 className="m-0">Hubble Sample Apps</h3>
           <Link
-            to="https://github.com/dyte-io"
+            to="https://github.com/hubble-network"
             className="font-jakarta text-sm font-semibold"
           >
             All apps <ArrowRightFilled className="ml-1" />
           </Link>
         </div>
-
         <div className="flex flex-col gap-4">
           {samples.map((sample) => (
             <Sample {...sample} key={sample.title} />

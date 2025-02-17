@@ -1,7 +1,9 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
 import {
+  BluetoothFilled,
   ChatMultipleRegular,
+  GlobeFilled,
   LiveRegular,
   MicRegular,
   VideoRegular,
@@ -11,29 +13,22 @@ import clsx from 'clsx';
 
 const PRODUCTS = [
   {
-    title: 'Live Video',
-    link: '/guides/live-video/intro-video-conf',
-    icon: VideoRegular,
-    lightImage: '/static/landing-page/hero/video-graphic.png',
-    darkImage: '/static/landing-page/hero/video-graphic-dark.png',
-    text: 'Enable live video communication within your application. Perfect for education, telemedicine, social networks and gaming',
+    title: 'Satellite Communication',
+    link: '/guides/satellite/intro',
+    icon: GlobeFilled, // Consider using an icon that better represents satellite connectivity
+    lightImage: '/static/landing-page/hero/satellite-graphic.png',
+    darkImage: '/static/landing-page/hero/satellite-graphic-dark.png',
+    text: 'Seamlessly transmit data via satellite for global connectivity, even in the most remote areas.',
   },
   {
-    title: 'Voice',
-    link: '/guides/voice-conf/intro-voice-conf',
-    icon: MicRegular,
-    lightImage: '/static/landing-page/hero/voice-graphic.png',
-    darkImage: '/static/landing-page/hero/voice-graphic-dark.png',
-    text: 'Incorporate high-quality real-time audio into your application. Build voice calls, audio conferences, voice chats in games and more',
+    title: 'BLE Connectivity',
+    link: '/guides/ble/intro',
+    icon: BluetoothFilled, // Change to an icon that fits BLE if needed
+    lightImage: '/static/landing-page/hero/ble-graphic.png',
+    darkImage: '/static/landing-page/hero/ble-graphic-dark.png',
+    text: 'Integrate low-energy Bluetooth communication for efficient and secure device connectivity.',
   },
-  {
-    title: 'Interactive Live Streaming',
-    link: '/guides/livestream/livestream-overview',
-    icon: LiveRegular,
-    lightImage: '/static/landing-page/hero/livestream-graphic.png',
-    darkImage: '/static/landing-page/hero/livestream-graphic-dark.png',
-    text: 'Integrate highly scalable live video broadcasting capabilities into your app, ideal for apps that involve streaming webinars, sports or live events',
-  },
+  // Add or update other product items as needed.
 ];
 
 function HeroProduct({
@@ -84,13 +79,10 @@ export default function HeroSection() {
       <section className="no-underline-links px-4 pt-16 lg:py-0">
         <div className="flex flex-col items-center justify-between py-14">
           <h2 className="mb-4 font-jakarta text-5xl font-bold">
-            Build with Dyte
+            Build with Hubble Network
           </h2>
           <p className="max-w-xl text-center text-text-400">
-            At Dyte, we're building the future of real-time communication.
-            Integrate programmable, and easily customizable live video and voice
-            into your web, mobile, and desktop applications with just a few
-            lines of code.
+          At Hubble, we're redefining global connectivity. Seamlessly integrate satellite and BLE network communication into your applications with our flexible, scalable SDK—designed for effortless adaptation across diverse environments, including real-time operating systems.
           </p>
         </div>
       </section>

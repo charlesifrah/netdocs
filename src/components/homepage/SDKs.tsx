@@ -1,13 +1,19 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
 
-function SDK({ icon, to, name }: { icon: string; name: string; to?: string }) {
+interface SDKProps {
+  icon: string;
+  name: string;
+  to?: string;
+}
+
+function SDK({ icon, to, name }: SDKProps) {
   return (
     <Link
       to={to}
       className="flex cursor-pointer items-center rounded-lg border border-secondary-700 p-2.5 text-inherit hover:border-primary hover:text-primary hover:no-underline"
     >
-      <img src={icon} className="mr-2 h-7 w-7" />
+      <img src={icon} alt={`${name} icon`} className="mr-2 h-7 w-7" />
       <span className="font-medium">{name}</span>
     </Link>
   );
@@ -21,15 +27,16 @@ export default function SDKs() {
       </span>
 
       <h3 className="mb-12 text-4xl">
-        Build the way you want in the framework you want!
+        Build your applications with Hubble Network’s SDKs
       </h3>
 
+      {/* UI Kit Section */}
       <div className="mb-10">
         <h4 className="mb-2 text-2xl">UI Kit</h4>
 
         <p className="mb-6 text-text-400">
-          Build faster with our prebuilt library of UI components, available for{' '}
-          <span className="font-semibold">all</span> frameworks.
+          Accelerate your development with our prebuilt library of UI components,
+          available for all frameworks.
         </p>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
@@ -71,12 +78,12 @@ export default function SDKs() {
         </div>
       </div>
 
+      {/* Core SDK Section */}
       <div>
         <h4 className="mb-2 text-2xl">Core SDK</h4>
 
         <p className="mb-6 text-text-400">
-          Our easy to use Video + Voice + Livestreaming + Chat{' '}
-          <span className="font-semibold">all in one</span> SDK
+          Our comprehensive, all-in-one SDK for seamless Satellite, BLE, and data communication.
         </p>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">

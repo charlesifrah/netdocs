@@ -7,12 +7,12 @@ const code_themes = {
 
 /** @type {import('@docusaurus/types').Config} */
 const meta = {
-  title: 'Dyte Docs',
+  title: 'Hubble Network Docs',
   tagline:
-    'Explore comprehensive documentation for Dyte, including guides, references, and best practices.',
-  url: 'https://docs.dyte.io',
+    'Explore comprehensive documentation for Hubble Network, including guides, references, and best practices.',
+  url: 'https://docs.hubblenetwork.com',
   baseUrl: '/',
-  favicon: '/favicon.ico',
+  favicon: '/hubfav.png',
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -22,14 +22,19 @@ const meta = {
 /** @type {import('@docusaurus/plugin-content-docs').Options[]} */
 const docs = [
   {
-    id: 'cli',
-    path: 'docs/cli',
-    routeBasePath: '/cli',
+    id: 'zephyr',
+    path: 'docs/zephyr',
+    routeBasePath: '/zephyr',
+    versions: {
+      current: {
+        label: '1.x.x',
+      },
+    },
   },
   {
-    id: 'plugin-sdk',
-    path: 'docs/plugin-sdk',
-    routeBasePath: '/plugin-sdk',
+    id: 'baremetal',
+    path: 'docs/baremetal',
+    routeBasePath: '/baremetal',
     versions: {
       current: {
         label: '1.x.x',
@@ -38,156 +43,23 @@ const docs = [
   },
 
   // Community packages
-  {
-    id: 'community-packages',
-    path: 'docs/community-packages',
-    routeBasePath: '/community-packages',
-  },
 
   // Web UI Kits
-  {
-    id: 'ui-kit',
-    path: 'docs/ui-kit',
-    routeBasePath: '/ui-kit',
-    versions: {
-      current: {
-        label: '1.x.x',
-      },
-    },
-  },
-  {
-    id: 'react-ui-kit',
-    path: 'docs/react-ui-kit',
-    routeBasePath: '/react-ui-kit',
-    versions: {
-      current: {
-        label: '1.x.x',
-      },
-    },
-  },
-  {
-    id: 'angular-ui-kit',
-    path: 'docs/angular-ui-kit',
-    routeBasePath: '/angular-ui-kit',
-    versions: {
-      current: {
-        label: '1.x.x',
-      },
-    },
-  },
-
+  
   // Web Core
-  {
-    id: 'web-core',
-    path: 'docs/web-core',
-    routeBasePath: '/web-core',
-    versions: {
-      current: {
-        label: '2.x.x',
-      },
-    },
-  },
+  
   // React Web Core
-  {
-    id: 'react-web-core',
-    path: 'docs/react-web-core',
-    routeBasePath: '/react-web-core',
-    versions: {
-      current: {
-        label: '2.x.x',
-      },
-    },
-  },
 
   // Mobile Core
-  {
-    id: 'android-core',
-    path: 'docs/android-core',
-    routeBasePath: '/android-core',
-    versions: {
-      current: {
-        label: '2.x.x',
-      },
-    },
-  },
-  {
-    id: 'flutter-core',
-    path: 'docs/flutter-core',
-    routeBasePath: '/flutter-core',
-    versions: {
-      current: {
-        label: '1.x.x',
-      },
-    },
-  },
-  {
-    id: 'ios-core',
-    path: 'docs/ios-core',
-    routeBasePath: '/ios-core',
-    versions: {
-      current: {
-        label: '2.x.x',
-      },
-    },
-  },
-  {
-    id: 'rn-core',
-    path: 'docs/rn-core',
-    routeBasePath: '/rn-core',
-    versions: {
-      current: {
-        label: '0.x.x',
-      },
-    },
-  },
-
+  
   // Mobile UI Kits
-  {
-    id: 'android',
-    path: 'docs/android',
-    routeBasePath: '/android',
-    versions: {
-      current: {
-        label: '1.x.x',
-      },
-    },
-  },
-  {
-    id: 'flutter',
-    path: 'docs/flutter',
-    routeBasePath: '/flutter',
-    versions: {
-      current: {
-        label: '0.7.x',
-      },
-    },
-  },
-  {
-    id: 'ios',
-    path: 'docs/ios',
-    routeBasePath: '/ios',
-    versions: {
-      current: {
-        label: '1.x.x',
-      },
-    },
-  },
-  {
-    id: 'react-native',
-    path: 'docs/rn-ui-kit',
-    routeBasePath: '/react-native',
-    versions: {
-      current: {
-        label: '1.x.x',
-      },
-    },
-  },
+
 ];
 
 /** @type {import('@docusaurus/plugin-content-docs').Options} */
 const defaultSettings = {
   breadcrumbs: true,
-  editUrl: 'https://github.com/dyte-io/docs/tree/main/',
+  editUrl: 'https://github.com/hubblenetwork',
   showLastUpdateTime: true,
   sidebarCollapsible: true,
   remarkPlugins: [
@@ -503,11 +375,11 @@ const config = {
       navbar: {
         logo: {
           href: '/',
-          src: '/logo/light.svg',
-          srcDark: '/logo/dark.svg',
-          alt: 'Dyte Documentation | Dyte Docs',
+          src: '/logo/logo-light.png',
+          srcDark: '/logo/logo-dark.png',
+          alt: 'Hubble Network Documentation',
           height: '40px',
-          width: '101px',
+          width: '140px',
         },
         items: [
           {
@@ -528,7 +400,7 @@ const config = {
             ],
           },
           {
-            label: 'REST API',
+            label: 'API',
             to: '/api/',
           },
           {
@@ -545,7 +417,7 @@ const config = {
           },
           {
             label: 'Support',
-            to: 'https://dyte.io/contact?type=docs',
+            to: 'https://hubblenetwork.com/contact?type=docs',
           },
 
           {
@@ -554,13 +426,13 @@ const config = {
           },
           {
             label: 'Book a demo',
-            href: 'https://dyte.io/schedule-demo',
+            href: 'https://hubblenetwork.com/schedule-demo',
             position: 'right',
             className: 'navbar-book-demo',
           },
           {
             label: 'Sign Up',
-            href: 'https://dev.dyte.io/register',
+            href: 'https://hubblenetwork.com/register',
             position: 'right',
             className: 'dev-portal-signup dev-portal-link',
           },
@@ -571,7 +443,7 @@ const config = {
           href: '/',
           src: '/logo/light.svg',
           srcDark: '/logo/dark.svg',
-          alt: 'Dyte Documentation | Dyte Docs',
+          alt: 'Hubble Network Documentation | Dyte Docs',
           height: '36px',
         },
         links: [
@@ -580,15 +452,15 @@ const config = {
             items: [
               {
                 label: 'Demo',
-                href: 'https://app.dyte.io',
+                href: 'https://hubblenetwork.com',
               },
               {
                 label: 'Developer Portal',
-                href: 'https://dev.dyte.io',
+                href: 'https://hubblenetwork.com',
               },
               {
                 label: 'Pricing',
-                href: 'https://dyte.io/#pricing',
+                href: 'https://hubblenetwork.com',
               },
             ],
           },
@@ -597,19 +469,19 @@ const config = {
             items: [
               {
                 label: 'About Us',
-                href: 'https://dyte.io',
+                href: 'https://hubblenetwork.com',
               },
               {
                 label: 'Join Us',
-                href: 'https://dyte.freshteam.com/jobs',
+                href: 'https://hubblenetwork.com',
               },
               {
                 label: 'Privacy Policy',
-                href: 'https://dyte.io/privacy-policy',
+                href: 'https://hubblenetwork.com/privacy-policy',
               },
               {
                 label: 'Contact Us',
-                href: 'https://dyte.io/contact',
+                href: 'https://hubblenetwork.com/contact',
               },
             ],
           },
@@ -622,12 +494,12 @@ const config = {
               },
               {
                 label: 'Blog',
-                href: 'https://dyte.io/blog',
+                href: 'https://hubblenetwork.com/blog',
               },
             ],
           },
         ],
-        copyright: 'Copyright © Dyte since 2023. All rights reserved.',
+        copyright: 'Copyright © Hubble Network 2025. All rights reserved.',
       },
       prism: {
         theme: code_themes.light,

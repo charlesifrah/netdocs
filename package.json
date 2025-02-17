@@ -40,7 +40,7 @@
     "@fluentui/react-icons": "^2.0.271",
     "@headlessui/react": "^1.7.14",
     "@radix-ui/react-select": "^2.1.5",
-    "@stoplight/elements": "^8.0.2",
+    "@stoplight/elements": "^7.3.9",
     "clsx": "^2.1.1",
     "nanoid": "^5.0.6",
     "param-case": "^3.0.4",
@@ -51,6 +51,7 @@
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10",
     "reactflow": "^11.10.4",
+    "styled-components": "^5.3.11",
     "zustand": "^4.5.2"
   },
   "devDependencies": {

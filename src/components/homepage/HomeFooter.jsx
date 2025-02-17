@@ -2,74 +2,48 @@ import React, { useEffect, useState } from 'react';
 import Link from '@docusaurus/Link';
 import clsx from 'clsx';
 import { Linkedin, Youtube, Github } from '@styled-icons/boxicons-logos';
+// Assuming you have an appropriate icon for Twitter or similar, replace XIcon if needed.
 import { XIcon } from '@site/src/icons';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import ThemedImage from '@theme/ThemedImage';
 
+// Update these arrays to reflect Hubble Network's offerings and pages.
 const products = [
   {
-    name: 'Live Video',
-    href: 'https://dyte.io/video-sdk',
+    name: 'Satellite Communication',
+    href: 'https://hubble.network/satellite-sdk',
   },
   {
-    name: 'Voice Conferencing',
-    href: 'https://dyte.io/voice-sdk',
+    name: 'BLE Connectivity',
+    href: 'https://hubble.network/ble-sdk',
   },
   {
-    name: 'Live Streaming',
-    href: 'https://dyte.io/live-streaming-sdk',
-  },
-  {
-    name: 'Chat SDK',
-    href: 'https://dyte.io/chat-sdk',
+    name: 'Network Management',
+    href: 'https://hubble.network/network-management',
   },
   {
     name: 'Pricing',
-    href: 'https://dyte.io/pricing',
+    href: 'https://hubble.network/pricing',
   },
   {
     name: 'Features',
     isAccordion: true,
     content: [
       {
-        name: 'Plugins',
-        href: 'https://dyte.io/features/plugin',
+        name: 'Global Coverage',
+        href: 'https://hubble.network/features/global-coverage',
       },
       {
-        name: 'Breakout Rooms',
-        href: 'https://dyte.io/features/breakout-rooms',
+        name: 'Low Latency',
+        href: 'https://hubble.network/features/low-latency',
       },
       {
-        name: 'Recording',
-        href: 'https://dyte.io/features/recording',
-      },
-      {
-        name: 'UI Kit',
-        href: 'https://dyte.io/features/ui-kit',
-      },
-      {
-        name: 'DevEx',
-        href: 'https://dyte.io/features/devex',
+        name: 'Seamless Integration',
+        href: 'https://hubble.network/features/integration',
       },
       {
         name: 'Security',
-        href: 'https://dyte.io/features/security',
-      },
-      {
-        name: 'AI',
-        href: 'https://dyte.io/features/dyte-ai',
-      },
-      {
-        name: 'Streaming',
-        href: 'https://dyte.io/features/streaming',
-      },
-      {
-        name: 'UX',
-        href: 'https://dyte.io/features/ux',
-      },
-      {
-        name: 'Interatcive',
-        href: 'https://dyte.io/features/interactive',
+        href: 'https://hubble.network/features/security',
       },
     ],
   },
@@ -78,15 +52,15 @@ const products = [
 const developers = [
   {
     name: 'Developer Portal',
-    href: 'https://accounts.dyte.io/auth/login',
+    href: 'https://developers.hubble.network',
   },
   {
     name: 'Documentation',
-    href: 'https://docs.dyte.io',
+    href: 'https://docs.hubble.network',
   },
   {
     name: 'Showcase',
-    href: 'https://dyte.io/showcase',
+    href: 'https://hubble.network/showcase',
   },
   {
     name: 'API Reference',
@@ -96,129 +70,34 @@ const developers = [
     name: 'Guides',
     href: '/guides',
   },
-  {
-    name: 'Platform',
-    isAccordion: true,
-    content: [
-      {
-        name: 'Flutter',
-        href: 'https://dyte.io/flutter-video-sdk',
-      },
-      {
-        name: 'Android',
-        href: 'https://dyte.io/android-video-sdk',
-      },
-      {
-        name: 'iOS',
-        href: 'https://dyte.io/ios-video-sdk',
-      },
-      {
-        name: 'React',
-        href: 'https://dyte.io/react-video-sdk',
-      },
-      {
-        name: 'React Native',
-        href: 'https://dyte.io/react-native-video-sdk',
-      },
-    ],
-  },
-  {
-    name: 'Migrate from Twilio',
-    href: 'https://dyte.io/blog/migrate-twilio-video-dyte-shim/',
-  },
 ];
 
 const usecases = [
-  { name: 'Ed-Tech', href: 'https://dyte.io/use-cases/ed-tech' },
-  { name: 'Telehealth', href: 'https://dyte.io/use-cases/telehealth' },
-  { name: 'HR Tech', href: 'https://dyte.io/use-cases/hr-tech' },
-  { name: 'Fitness', href: 'https://dyte.io/use-cases/fitness' },
-  { name: 'Social', href: 'https://dyte.io/use-cases/social' },
-  { name: 'Gaming', href: 'https://dyte.io/use-cases/gaming' },
-  { name: 'Events', href: 'https://dyte.io/use-cases/events' },
-  { name: 'Dating', href: 'https://dyte.io/use-cases/dating' },
+  { name: 'IoT', href: 'https://hubble.network/use-cases/iot' },
+  { name: 'Telecommunications', href: 'https://hubble.network/use-cases/telecom' },
+  { name: 'Remote Monitoring', href: 'https://hubble.network/use-cases/remote-monitoring' },
+  { name: 'Logistics', href: 'https://hubble.network/use-cases/logistics' },
 ];
 
 const company = [
-  { name: 'About Us', href: 'https://dyte.io/about' },
-  { name: 'Customers', href: 'https://dyte.io/customers' },
-  { name: 'Blog', href: 'https://dyte.io/blog' },
-  { name: 'Careers', href: 'https://jobs.lever.co/dyte-io' },
-  { name: 'Contact Us', href: 'https://dyte.io/contact' },
+  { name: 'About Us', href: 'https://hubble.network/about' },
+  { name: 'Customers', href: 'https://hubble.network/customers' },
+  { name: 'Blog', href: 'https://hubble.network/blog' },
+  { name: 'Careers', href: 'https://hubble.network/careers' },
+  { name: 'Contact Us', href: 'https://hubble.network/contact' },
   { name: 'FAQ', href: '/faq' },
-  { name: 'Guide on Video SDK', href: 'https://dyte.io/blog/video-sdk/' },
 ];
 
 const comparisons = [
-  { name: 'Dyte vs Raw WebRTC', href: 'https://dyte.io/webrtc-alternative' },
-  { name: 'Dyte vs Agora', href: 'https://dyte.io/agora-competitor' },
-  { name: 'Dyte vs Zoom', href: 'https://dyte.io/zoom-sdk-competitor' },
-  { name: 'Dyte vs Twilio', href: 'https://dyte.io/twilio-video-competitor' },
-  { name: 'Dyte vs Vonage', href: 'https://dyte.io/vonage-video-alternative' },
+  { name: 'Hubble vs Competitor A', href: 'https://hubble.network/compare/competitor-a' },
+  { name: 'Hubble vs Competitor B', href: 'https://hubble.network/compare/competitor-b' },
   {
-    name: 'View 14 more',
+    name: 'View More',
     isAccordion: true,
     content: [
-      {
-        name: 'Zoom vs Agora',
-        href: 'https://dyte.io/zoom-vs-agora',
-      },
-      {
-        name: 'Agora vs Twilio',
-        href: 'https://dyte.io/agora-vs-twilio',
-      },
-      {
-        name: 'Zoom vs Twilio',
-        href: 'https://dyte.io/zoom-vs-twilio',
-      },
-      {
-        name: 'Agora vs Mux',
-        href: 'https://dyte.io/agora-vs-mux',
-      },
-      {
-        name: 'Zoom vs Whereby',
-        href: 'https://dyte.io/zoom-vs-whereby',
-      },
-      {
-        name: 'Tokbox vs Twilio',
-        href: 'https://dyte.io/tokbox-vs-twilio',
-      },
-      {
-        name: 'Tokbox vs Agora',
-        href: 'https://dyte.io/tokbox-vs-agora',
-      },
-      {
-        name: 'AWS Chime vs Twilio',
-        href: 'https://dyte.io/aws-chime-vs-twilio',
-      },
-      {
-        name: 'Tokbox vs Jitsi',
-        href: 'https://dyte.io/tokbox-vs-jitsi',
-      },
-      {
-        name: 'Zoom vs Jitsi',
-        href: 'https://dyte.io/zoom-vs-jitsi',
-      },
-      {
-        name: 'Agora vs Jitsi',
-        href: 'https://dyte.io/agora-vs-jitsi',
-      },
-      {
-        name: 'Whereby vs Jitsi',
-        href: 'https://dyte.io/whereby-vs-jitsi',
-      },
-      {
-        name: 'Livekit vs Jitsi',
-        href: 'https://dyte.io/livekit-vs-jitsi',
-      },
-      {
-        name: '100ms vs Agora',
-        href: 'https://dyte.io/100ms-vs-agora',
-      },
-      {
-        name: 'Twilio Video Alternatives',
-        href: 'https://dyte.io/blog/twilio-video-alternatives/',
-      },
+      { name: 'Hubble vs Competitor C', href: 'https://hubble.network/compare/competitor-c' },
+      { name: 'Hubble vs Competitor D', href: 'https://hubble.network/compare/competitor-d' },
+      // Add more comparisons as needed.
     ],
   },
 ];
@@ -239,11 +118,7 @@ function Safety({ className }) {
       <div className="flex flex-1 items-center justify-around px-6">
         <img src="/img/soc-compliant-1.png" alt="SOC Compliant" />
         <img src="/img/vector.png" alt="HIPAA Compliant" />
-        <img
-          style={{ width: '62px' }}
-          src="/img/gdpr_docs.png"
-          alt="GDPR compliant"
-        />
+        <img style={{ width: '62px' }} src="/img/gdpr_docs.png" alt="GDPR Compliant" />
       </div>
     </div>
   );
@@ -272,7 +147,7 @@ function Status({ className }) {
 
   return (
     <Link
-      href="https://status.dyte.io"
+      href="https://status.hubble.network"
       className={clsx(
         'flex items-center gap-2 rounded-lg border border-transparent p-1 px-2 font-jakarta font-semibold text-gray-500 transition-colors hover:border-gray-400 hover:bg-white hover:no-underline dark:hover:bg-[#474747]',
         className
@@ -281,7 +156,7 @@ function Status({ className }) {
     >
       <div
         className={clsx(
-          'h-4 w-4 rounded-full bg-[#2DB002]',
+          'h-4 w-4 rounded-full',
           status.indicator === 'none' ? 'bg-[#2DB002]' : 'bg-yellow-500'
         )}
       ></div>
@@ -291,13 +166,11 @@ function Status({ className }) {
 }
 
 function Links({ name, links, isAccordion }) {
-  //To control accordion in footer
+  // To control accordion in footer
   const [activeAccordion, setActiveAccordion] = useState(null);
 
   const toggleAccordion = (href) => {
-    setActiveAccordion((prevAccordion) =>
-      prevAccordion === href ? null : href
-    );
+    setActiveAccordion((prevAccordion) => (prevAccordion === href ? null : href));
   };
 
   return (
@@ -340,11 +213,11 @@ export default function Footer() {
       <div className="mx-auto flex w-full max-w-[1080px] flex-col px-6 py-12">
         <div className="mb-12 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <ThemedImage
-            alt="Dyte"
+            alt="Hubble Network"
             className="h-9 w-fit lg:h-12"
             sources={{
-              light: '/logo/dyte.svg',
-              dark: '/logo/dyte_dark_logo.svg',
+              light: '/logo/logo-light.png',
+              dark: '/logo/logo-dark.png',
             }}
           />
 
@@ -376,50 +249,50 @@ export default function Footer() {
 
           <div className="flex flex-wrap gap-2 text-sm text-gray-500">
             <Link
-              href="https://dyte.io/privacy-policy"
+              href="https://hubble.network/privacy-policy"
               className="text-inherit hover:text-black hover:underline dark:text-[#999] dark:hover:text-[#2160fd]"
             >
               Privacy Policy
             </Link>
             &bull;
             <Link
-              href="https://dyte.io/terms-of-service"
+              href="https://hubble.network/terms-of-service"
               className="text-inherit hover:text-black hover:underline dark:text-[#999] dark:hover:text-[#2160fd]"
             >
               Terms of Service
             </Link>
             &bull;
             <Link
-              href="https://dyte.io/website-terms-of-use"
+              href="https://hubble.network/website-terms-of-use"
               className="text-inherit hover:text-black hover:underline dark:text-[#999] dark:hover:text-[#2160fd]"
             >
               Website Terms of Use
             </Link>
             &bull;
             <span className="text-inherit dark:text-[#999]">
-              &copy; {new Date().getFullYear()} Dyte Inc.
+              &copy; {new Date().getFullYear()} Hubble Network. All rights reserved.
             </span>
           </div>
 
           <div className="flex items-center gap-4">
             <Link
-              href="https://github.com/dyte-io"
-              aria-label="Dyte's GitHub Organization"
+              href="https://github.com/hubble-network"
+              aria-label="Hubble Network GitHub Organization"
             >
               <Github className="h-7 w-7 text-zinc-400 hover:text-primary" />
             </Link>
             <Link
-              href="https://linkedin.com/company/dyteio"
+              href="https://linkedin.com/company/hubble-network"
               aria-label="LinkedIn"
             >
               <Linkedin className="h-7 w-7 text-zinc-400 hover:text-primary" />
             </Link>
-            <Link href="https://twitter.com/dyte_io" aria-label="Twitter">
+            <Link href="https://twitter.com/hubble_network" aria-label="Twitter">
               <XIcon className="h-7 w-7 text-zinc-400 hover:text-primary" />
             </Link>
             <Link
-              href="https://youtube.com/company/dyteio"
-              aria-label="Dyte YouTube Channel"
+              href="https://youtube.com/channel/hubble_network"
+              aria-label="Hubble Network YouTube Channel"
             >
               <Youtube className="h-7 w-7 text-zinc-400 hover:text-primary" />
             </Link>

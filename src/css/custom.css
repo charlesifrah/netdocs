@@ -54,7 +54,7 @@
 
 @layer base {
   :root {
-    --docs-color-primary-100: 26 144 255;
+    --docs-color-primary-100: 90 100 255;
     --docs-color-primary-200: 33 96 253;
 
     --docs-color-secondary-700: 232 232 236;
@@ -777,6 +777,11 @@ html[data-theme='dark'] .dropdown > .navbar__link:after {
   display: none;
 }
 
+/* Show BLE submenu when data-sdk-menu is "ble" */
+body[data-sdk-menu='ble'] [data-dropdown-sdks='ble'] {
+  display: flex;
+}
+
 body:not([data-sdk-menu]) [data-dropdown-sdks='web'] {
   display: flex;
 }
@@ -797,6 +802,8 @@ body[data-sdk-menu='plugin'] [data-dropdown-sdks='plugin'] {
   @apply border-0 border-l-4 border-solid border-transparent pl-4;
 }
 
+/* Apply left border styling for BLE dropdown items */
+body[data-sdk-menu='ble'] [data-dropdown-sdks-menu='ble'],
 body[data-sdk-menu='web'] [data-dropdown-sdks-menu='web'],
 body[data-sdk-menu='mobile'] [data-dropdown-sdks-menu='mobile'],
 body[data-sdk-menu='plugin'] [data-dropdown-sdks-menu='plugin'] {
@@ -1556,4 +1563,12 @@ h3.anchor > code {
   }
 }
 
-/* CSS for hello bar ends*/
+/* CSS Overrides*/
+html[data-theme="dark"] {
+  --ifm-background-color: #0a0623;
+  --docs-color-background: #0a0623;
+  /* If you use other background variables that affect the main area, override them here too */
+  /* For example: */
+  --ifm-background-surface-color: #0a0623;
+}
+
