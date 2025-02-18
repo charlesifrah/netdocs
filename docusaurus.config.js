@@ -31,7 +31,7 @@ const docs = [
   {
     id: 'zephyr',
     path: 'docs/zephyr',
-    routeBasePath: '/zephyr',
+    routeBasePath: 'zephyr',
     versions: {
       current: {
         label: '1.x.x',
@@ -41,7 +41,7 @@ const docs = [
   {
     id: 'baremetal',
     path: 'docs/baremetal',
-    routeBasePath: '/baremetal',
+    routeBasePath: 'baremetal',
     versions: {
       current: {
         label: '1.x.x',
