@@ -114,6 +114,11 @@ const plugins = [
           return ['/guides/capabilities/embed'];
         }
 
+        // Redirect /docs/zephyr to /zephyr
+        if (path === '/docs/zephyr') {
+        return ['/zephyr'];
+        }
+
         if (path.startsWith('/react-ui-kit/basics/integrate')) {
           return ['/react-ui-kit/basics/components-basics'];
         }
